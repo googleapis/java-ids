@@ -16,34 +16,27 @@
 
 package com.google.cloud.ids.v1.samples;
 
-// [START ids_v1_generated_idsclient_createendpoint_sync]
-import com.google.cloud.ids.v1.CreateEndpointRequest;
+// [START ids_v1_generated_IDS_GetEndpoint_Endpointname_sync]
 import com.google.cloud.ids.v1.Endpoint;
+import com.google.cloud.ids.v1.EndpointName;
 import com.google.cloud.ids.v1.IDSClient;
-import com.google.cloud.ids.v1.LocationName;
 
-public class SyncCreateEndpoint {
+public class SyncGetEndpointEndpointname {
 
   public static void main(String[] args) throws Exception {
-    syncCreateEndpoint();
+    syncGetEndpointEndpointname();
   }
 
-  public static void syncCreateEndpoint() throws Exception {
+  public static void syncGetEndpointEndpointname() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
     try (IDSClient iDSClient = IDSClient.create()) {
-      CreateEndpointRequest request =
-          CreateEndpointRequest.newBuilder()
-              .setParent(LocationName.of("[PROJECT]", "[LOCATION]").toString())
-              .setEndpointId("endpointId-1837754992")
-              .setEndpoint(Endpoint.newBuilder().build())
-              .setRequestId("requestId693933066")
-              .build();
-      Endpoint response = iDSClient.createEndpointAsync(request).get();
+      EndpointName name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
+      Endpoint response = iDSClient.getEndpoint(name);
     }
   }
 }
-// [END ids_v1_generated_idsclient_createendpoint_sync]
+// [END ids_v1_generated_IDS_GetEndpoint_Endpointname_sync]

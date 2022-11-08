@@ -16,37 +16,34 @@
 
 package com.google.cloud.ids.v1.samples;
 
-// [START ids_v1_generated_idsclient_deleteendpoint_lro_async]
-import com.google.api.gax.longrunning.OperationFuture;
-import com.google.cloud.ids.v1.DeleteEndpointRequest;
-import com.google.cloud.ids.v1.EndpointName;
+// [START ids_v1_generated_IDS_CreateEndpoint_sync]
+import com.google.cloud.ids.v1.CreateEndpointRequest;
+import com.google.cloud.ids.v1.Endpoint;
 import com.google.cloud.ids.v1.IDSClient;
-import com.google.cloud.ids.v1.OperationMetadata;
-import com.google.protobuf.Empty;
+import com.google.cloud.ids.v1.LocationName;
 
-public class AsyncDeleteEndpointLRO {
+public class SyncCreateEndpoint {
 
   public static void main(String[] args) throws Exception {
-    asyncDeleteEndpointLRO();
+    syncCreateEndpoint();
   }
 
-  public static void asyncDeleteEndpointLRO() throws Exception {
+  public static void syncCreateEndpoint() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
     try (IDSClient iDSClient = IDSClient.create()) {
-      DeleteEndpointRequest request =
-          DeleteEndpointRequest.newBuilder()
-              .setName(EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString())
+      CreateEndpointRequest request =
+          CreateEndpointRequest.newBuilder()
+              .setParent(LocationName.of("[PROJECT]", "[LOCATION]").toString())
+              .setEndpointId("endpointId-1837754992")
+              .setEndpoint(Endpoint.newBuilder().build())
               .setRequestId("requestId693933066")
               .build();
-      OperationFuture<Empty, OperationMetadata> future =
-          iDSClient.deleteEndpointOperationCallable().futureCall(request);
-      // Do something.
-      future.get();
+      Endpoint response = iDSClient.createEndpointAsync(request).get();
     }
   }
 }
-// [END ids_v1_generated_idsclient_deleteendpoint_lro_async]
+// [END ids_v1_generated_IDS_CreateEndpoint_sync]

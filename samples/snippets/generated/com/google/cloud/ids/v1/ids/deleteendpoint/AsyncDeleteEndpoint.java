@@ -16,27 +16,35 @@
 
 package com.google.cloud.ids.v1.samples;
 
-// [START ids_v1_generated_idsclient_deleteendpoint_endpointname_sync]
+// [START ids_v1_generated_IDS_DeleteEndpoint_async]
+import com.google.api.core.ApiFuture;
+import com.google.cloud.ids.v1.DeleteEndpointRequest;
 import com.google.cloud.ids.v1.EndpointName;
 import com.google.cloud.ids.v1.IDSClient;
-import com.google.protobuf.Empty;
+import com.google.longrunning.Operation;
 
-public class SyncDeleteEndpointEndpointname {
+public class AsyncDeleteEndpoint {
 
   public static void main(String[] args) throws Exception {
-    syncDeleteEndpointEndpointname();
+    asyncDeleteEndpoint();
   }
 
-  public static void syncDeleteEndpointEndpointname() throws Exception {
+  public static void asyncDeleteEndpoint() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
     try (IDSClient iDSClient = IDSClient.create()) {
-      EndpointName name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
-      iDSClient.deleteEndpointAsync(name).get();
+      DeleteEndpointRequest request =
+          DeleteEndpointRequest.newBuilder()
+              .setName(EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString())
+              .setRequestId("requestId693933066")
+              .build();
+      ApiFuture<Operation> future = iDSClient.deleteEndpointCallable().futureCall(request);
+      // Do something.
+      future.get();
     }
   }
 }
-// [END ids_v1_generated_idsclient_deleteendpoint_endpointname_sync]
+// [END ids_v1_generated_IDS_DeleteEndpoint_async]

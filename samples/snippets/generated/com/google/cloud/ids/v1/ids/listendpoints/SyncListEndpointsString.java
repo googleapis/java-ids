@@ -16,37 +16,29 @@
 
 package com.google.cloud.ids.v1.samples;
 
-// [START ids_v1_generated_idsclient_listendpoints_sync]
+// [START ids_v1_generated_IDS_ListEndpoints_String_sync]
 import com.google.cloud.ids.v1.Endpoint;
 import com.google.cloud.ids.v1.IDSClient;
-import com.google.cloud.ids.v1.ListEndpointsRequest;
 import com.google.cloud.ids.v1.LocationName;
 
-public class SyncListEndpoints {
+public class SyncListEndpointsString {
 
   public static void main(String[] args) throws Exception {
-    syncListEndpoints();
+    syncListEndpointsString();
   }
 
-  public static void syncListEndpoints() throws Exception {
+  public static void syncListEndpointsString() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
     try (IDSClient iDSClient = IDSClient.create()) {
-      ListEndpointsRequest request =
-          ListEndpointsRequest.newBuilder()
-              .setParent(LocationName.of("[PROJECT]", "[LOCATION]").toString())
-              .setPageSize(883849137)
-              .setPageToken("pageToken873572522")
-              .setFilter("filter-1274492040")
-              .setOrderBy("orderBy-1207110587")
-              .build();
-      for (Endpoint element : iDSClient.listEndpoints(request).iterateAll()) {
+      String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
+      for (Endpoint element : iDSClient.listEndpoints(parent).iterateAll()) {
         // doThingsWith(element);
       }
     }
   }
 }
-// [END ids_v1_generated_idsclient_listendpoints_sync]
+// [END ids_v1_generated_IDS_ListEndpoints_String_sync]

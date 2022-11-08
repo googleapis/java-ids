@@ -16,27 +16,27 @@
 
 package com.google.cloud.ids.v1.samples;
 
-// [START ids_v1_generated_idsclient_deleteendpoint_string_sync]
+// [START ids_v1_generated_IDS_DeleteEndpoint_Endpointname_sync]
 import com.google.cloud.ids.v1.EndpointName;
 import com.google.cloud.ids.v1.IDSClient;
 import com.google.protobuf.Empty;
 
-public class SyncDeleteEndpointString {
+public class SyncDeleteEndpointEndpointname {
 
   public static void main(String[] args) throws Exception {
-    syncDeleteEndpointString();
+    syncDeleteEndpointEndpointname();
   }
 
-  public static void syncDeleteEndpointString() throws Exception {
+  public static void syncDeleteEndpointEndpointname() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
     try (IDSClient iDSClient = IDSClient.create()) {
-      String name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString();
+      EndpointName name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
       iDSClient.deleteEndpointAsync(name).get();
     }
   }
 }
-// [END ids_v1_generated_idsclient_deleteendpoint_string_sync]
+// [END ids_v1_generated_IDS_DeleteEndpoint_Endpointname_sync]

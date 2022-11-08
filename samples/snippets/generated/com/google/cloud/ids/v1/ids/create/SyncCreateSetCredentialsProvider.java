@@ -16,29 +16,29 @@
 
 package com.google.cloud.ids.v1.samples;
 
-// [START ids_v1_generated_idsclient_listendpoints_string_sync]
-import com.google.cloud.ids.v1.Endpoint;
+// [START ids_v1_generated_IDS_Create_SetCredentialsProvider_sync]
+import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.cloud.ids.v1.IDSClient;
-import com.google.cloud.ids.v1.LocationName;
+import com.google.cloud.ids.v1.IDSSettings;
+import com.google.cloud.ids.v1.myCredentials;
 
-public class SyncListEndpointsString {
+public class SyncCreateSetCredentialsProvider {
 
   public static void main(String[] args) throws Exception {
-    syncListEndpointsString();
+    syncCreateSetCredentialsProvider();
   }
 
-  public static void syncListEndpointsString() throws Exception {
+  public static void syncCreateSetCredentialsProvider() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    try (IDSClient iDSClient = IDSClient.create()) {
-      String parent = LocationName.of("[PROJECT]", "[LOCATION]").toString();
-      for (Endpoint element : iDSClient.listEndpoints(parent).iterateAll()) {
-        // doThingsWith(element);
-      }
-    }
+    IDSSettings iDSSettings =
+        IDSSettings.newBuilder()
+            .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
+            .build();
+    IDSClient iDSClient = IDSClient.create(iDSSettings);
   }
 }
-// [END ids_v1_generated_idsclient_listendpoints_string_sync]
+// [END ids_v1_generated_IDS_Create_SetCredentialsProvider_sync]

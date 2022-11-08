@@ -16,27 +16,37 @@
 
 package com.google.cloud.ids.v1.samples;
 
-// [START ids_v1_generated_idsclient_getendpoint_endpointname_sync]
-import com.google.cloud.ids.v1.Endpoint;
+// [START ids_v1_generated_IDS_DeleteEndpoint_LRO_async]
+import com.google.api.gax.longrunning.OperationFuture;
+import com.google.cloud.ids.v1.DeleteEndpointRequest;
 import com.google.cloud.ids.v1.EndpointName;
 import com.google.cloud.ids.v1.IDSClient;
+import com.google.cloud.ids.v1.OperationMetadata;
+import com.google.protobuf.Empty;
 
-public class SyncGetEndpointEndpointname {
+public class AsyncDeleteEndpointLRO {
 
   public static void main(String[] args) throws Exception {
-    syncGetEndpointEndpointname();
+    asyncDeleteEndpointLRO();
   }
 
-  public static void syncGetEndpointEndpointname() throws Exception {
+  public static void asyncDeleteEndpointLRO() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
     try (IDSClient iDSClient = IDSClient.create()) {
-      EndpointName name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]");
-      Endpoint response = iDSClient.getEndpoint(name);
+      DeleteEndpointRequest request =
+          DeleteEndpointRequest.newBuilder()
+              .setName(EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString())
+              .setRequestId("requestId693933066")
+              .build();
+      OperationFuture<Empty, OperationMetadata> future =
+          iDSClient.deleteEndpointOperationCallable().futureCall(request);
+      // Do something.
+      future.get();
     }
   }
 }
-// [END ids_v1_generated_idsclient_getendpoint_endpointname_sync]
+// [END ids_v1_generated_IDS_DeleteEndpoint_LRO_async]

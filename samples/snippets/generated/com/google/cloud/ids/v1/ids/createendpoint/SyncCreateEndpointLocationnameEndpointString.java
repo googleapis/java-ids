@@ -16,38 +16,29 @@
 
 package com.google.cloud.ids.v1.samples;
 
-// [START ids_v1_generated_idsclient_createendpoint_async]
-import com.google.api.core.ApiFuture;
-import com.google.cloud.ids.v1.CreateEndpointRequest;
+// [START ids_v1_generated_IDS_CreateEndpoint_LocationnameEndpointString_sync]
 import com.google.cloud.ids.v1.Endpoint;
 import com.google.cloud.ids.v1.IDSClient;
 import com.google.cloud.ids.v1.LocationName;
-import com.google.longrunning.Operation;
 
-public class AsyncCreateEndpoint {
+public class SyncCreateEndpointLocationnameEndpointString {
 
   public static void main(String[] args) throws Exception {
-    asyncCreateEndpoint();
+    syncCreateEndpointLocationnameEndpointString();
   }
 
-  public static void asyncCreateEndpoint() throws Exception {
+  public static void syncCreateEndpointLocationnameEndpointString() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
     try (IDSClient iDSClient = IDSClient.create()) {
-      CreateEndpointRequest request =
-          CreateEndpointRequest.newBuilder()
-              .setParent(LocationName.of("[PROJECT]", "[LOCATION]").toString())
-              .setEndpointId("endpointId-1837754992")
-              .setEndpoint(Endpoint.newBuilder().build())
-              .setRequestId("requestId693933066")
-              .build();
-      ApiFuture<Operation> future = iDSClient.createEndpointCallable().futureCall(request);
-      // Do something.
-      Operation response = future.get();
+      LocationName parent = LocationName.of("[PROJECT]", "[LOCATION]");
+      Endpoint endpoint = Endpoint.newBuilder().build();
+      String endpointId = "endpointId-1837754992";
+      Endpoint response = iDSClient.createEndpointAsync(parent, endpoint, endpointId).get();
     }
   }
 }
-// [END ids_v1_generated_idsclient_createendpoint_async]
+// [END ids_v1_generated_IDS_CreateEndpoint_LocationnameEndpointString_sync]

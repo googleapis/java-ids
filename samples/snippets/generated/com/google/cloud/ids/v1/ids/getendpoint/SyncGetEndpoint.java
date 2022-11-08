@@ -16,48 +16,31 @@
 
 package com.google.cloud.ids.v1.samples;
 
-// [START ids_v1_generated_idsclient_listendpoints_paged_async]
+// [START ids_v1_generated_IDS_GetEndpoint_sync]
 import com.google.cloud.ids.v1.Endpoint;
+import com.google.cloud.ids.v1.EndpointName;
+import com.google.cloud.ids.v1.GetEndpointRequest;
 import com.google.cloud.ids.v1.IDSClient;
-import com.google.cloud.ids.v1.ListEndpointsRequest;
-import com.google.cloud.ids.v1.ListEndpointsResponse;
-import com.google.cloud.ids.v1.LocationName;
-import com.google.common.base.Strings;
 
-public class AsyncListEndpointsPaged {
+public class SyncGetEndpoint {
 
   public static void main(String[] args) throws Exception {
-    asyncListEndpointsPaged();
+    syncGetEndpoint();
   }
 
-  public static void asyncListEndpointsPaged() throws Exception {
+  public static void syncGetEndpoint() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
     try (IDSClient iDSClient = IDSClient.create()) {
-      ListEndpointsRequest request =
-          ListEndpointsRequest.newBuilder()
-              .setParent(LocationName.of("[PROJECT]", "[LOCATION]").toString())
-              .setPageSize(883849137)
-              .setPageToken("pageToken873572522")
-              .setFilter("filter-1274492040")
-              .setOrderBy("orderBy-1207110587")
+      GetEndpointRequest request =
+          GetEndpointRequest.newBuilder()
+              .setName(EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString())
               .build();
-      while (true) {
-        ListEndpointsResponse response = iDSClient.listEndpointsCallable().call(request);
-        for (Endpoint element : response.getEndpointsList()) {
-          // doThingsWith(element);
-        }
-        String nextPageToken = response.getNextPageToken();
-        if (!Strings.isNullOrEmpty(nextPageToken)) {
-          request = request.toBuilder().setPageToken(nextPageToken).build();
-        } else {
-          break;
-        }
-      }
+      Endpoint response = iDSClient.getEndpoint(request);
     }
   }
 }
-// [END ids_v1_generated_idsclient_listendpoints_paged_async]
+// [END ids_v1_generated_IDS_GetEndpoint_sync]

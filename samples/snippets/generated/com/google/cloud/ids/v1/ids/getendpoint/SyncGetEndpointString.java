@@ -16,25 +16,27 @@
 
 package com.google.cloud.ids.v1.samples;
 
-// [START ids_v1_generated_idsclient_create_setendpoint_sync]
+// [START ids_v1_generated_IDS_GetEndpoint_String_sync]
+import com.google.cloud.ids.v1.Endpoint;
+import com.google.cloud.ids.v1.EndpointName;
 import com.google.cloud.ids.v1.IDSClient;
-import com.google.cloud.ids.v1.IDSSettings;
-import com.google.cloud.ids.v1.myEndpoint;
 
-public class SyncCreateSetEndpoint {
+public class SyncGetEndpointString {
 
   public static void main(String[] args) throws Exception {
-    syncCreateSetEndpoint();
+    syncGetEndpointString();
   }
 
-  public static void syncCreateSetEndpoint() throws Exception {
+  public static void syncGetEndpointString() throws Exception {
     // This snippet has been automatically generated and should be regarded as a code template only.
     // It will require modifications to work:
     // - It may require correct/in-range values for request initialization.
     // - It may require specifying regional endpoints when creating the service client as shown in
     // https://cloud.google.com/java/docs/setup#configure_endpoints_for_the_client_library
-    IDSSettings iDSSettings = IDSSettings.newBuilder().setEndpoint(myEndpoint).build();
-    IDSClient iDSClient = IDSClient.create(iDSSettings);
+    try (IDSClient iDSClient = IDSClient.create()) {
+      String name = EndpointName.of("[PROJECT]", "[LOCATION]", "[ENDPOINT]").toString();
+      Endpoint response = iDSClient.getEndpoint(name);
+    }
   }
 }
-// [END ids_v1_generated_idsclient_create_setendpoint_sync]
+// [END ids_v1_generated_IDS_GetEndpoint_String_sync]
